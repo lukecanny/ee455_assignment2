@@ -21,5 +21,13 @@ Rs = Astop;
 % Applying cheby1 function
 [b,a] = cheby1(n, Rp, Wp);
 
-% Applying freqz function to plot Magnitude and Phase response.
+% Plotting Chebyshev type 1 filter magnitude and phase respone
 freqz(b,a,1024,fsamp)
+
+% Applying butter function
+[b1,a1] = butter(n, fcut/(fsamp/2));
+
+% Plotting butterworth filter magnitude and phase response
+title("Butterworth Filter");
+figure
+freqz(b1,a1,[],fsamp)
