@@ -21,5 +21,5 @@ for i = 1:7
     % Applying firpm function
     b = firpm(n, f, a);
     freqz(b,1,512);
-    title("Plot of X against Y where n = " + n);
+    title("Plot of Magnitude Response - n = " + n);
 end
