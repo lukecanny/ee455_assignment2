@@ -10,3 +10,10 @@ fcut            = 3000;     % Cut-off Frequency
 transitionBW    = 400;      % Transition Bandwidth
 gainStop        = 0;        % Stopband Gain
 
+% Deriving variables required to use firpm function
+f = [0 fcut/(fsamp/2) (fcut+transitionBW)/(fsamp/2) 1];
+a = [1 1 0 0];
+
+% Applying firpm function
+b = firpm(20, f, a);
+freqz(b,1,512);
