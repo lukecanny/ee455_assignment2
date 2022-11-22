@@ -19,3 +19,7 @@ Rs = Astop;
 [n,Wp] = cheb1ord(Wp,Ws,Rp,Rs);
 
 % Applying cheby1 function
+[b,a] = cheby1(n, Rp, Wp);
+
+% Applying freqz function to plot Magnitude and Phase response.
+freqz(b,a,1024,fsamp)
