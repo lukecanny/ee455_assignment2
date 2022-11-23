@@ -2,7 +2,6 @@
 %   Date:   16/11/22
 %   Description: This script generates the required plots for Part A of
 %   Assignment 2 EE445 (Digital Signal Processing)
-%
 
 % Declaring inital variables
 fsamp           = 12000;    % Sampling Frequency
@@ -22,13 +21,19 @@ Rs = Astop;
 [b,a] = cheby1(n, Rp, Wp);
 
 % Plotting Chebyshev type 1 filter magnitude and phase response
-title("Chebyshev Type 1 Filter")
 freqz(b,a,1024,fsamp)
-
+hold on;
 % Applying butter function
 [b1,a1] = butter(n, fcut/(fsamp/2));
 
 % Plotting butterworth filter magnitude and phase response
-title("Butterworth Filter");
-figure
-freqz(b1,a1,[],fsamp)
+freqz(b1,a1,1024,fsamp)
+hold on;
+
+% Adding colour to lines, title etc.
+title ("Magnitude Response of the Filter")
+
+lines = findall(gcf, 'type', 'line');
+lines(1).Color = 'red';
+lines(2).Color = 'blue';
+hold off;
